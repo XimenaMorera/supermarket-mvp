@@ -62,7 +62,7 @@ namespace Supermarket_mevp.Presenter
             var payMode = (PayModeModel)payModeBindigSource.Current;
             payModeList = repository.GetAll();
             view.PayModeId=payMode.Id.ToString();
-            view.PayModeName = payMode.Name();
+            view.PayModeName = payMode.Name;
             view.PayModeObservation=payMode.Observation;
             view.IsEdit=true;
 
