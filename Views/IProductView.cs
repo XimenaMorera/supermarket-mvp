@@ -8,5 +8,7 @@ namespace Supermarket_mevp.Views
 {
     internal interface IProductView
     {
+        string PayModeId { get; set; }
+        string PayModeName { get; set; }
     }
 }
