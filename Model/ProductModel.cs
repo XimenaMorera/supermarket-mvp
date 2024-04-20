@@ -16,12 +16,22 @@ namespace Supermarket_mevp.Model
         [DisplayName("Product Name")]
         [Required(ErrorMessage = "Product name is requered")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Product name must be between 3 a 50 characters")]
-        public string Product_Name { get; set; }
+        public string ProductName { get; set; }
 
-        [DisplayName("Observation")]
-        [Required(ErrorMessage = "Product observation is required")]
-        [StringLength(200, MinimumLength = 3, ErrorMessage = "Product observation must be between 3 and 200 characters")]
+        [DisplayName("Product price")]
+        [Required(ErrorMessage = "Product price is required")]
+        public int ProductPrice { get; set; }
 
+        [DisplayName("Product stock")]
+        [Required(ErrorMessage = "Product stock is required")]
+        public int ProductStock { get; set; }
+
+        [DisplayName("Product Category Id")]
+        [Required(ErrorMessage = "Product category Id is required")]
+        public int ProductCateId
+        {
+            get; set;
+        }
         public string Observation { get; set; }
     }
 }
