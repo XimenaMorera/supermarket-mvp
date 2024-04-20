@@ -12,13 +12,13 @@ using System.Windows.Forms.Design;
 
 namespace Supermarket_mevp.Views
 {
-    public partial class PayModeView : Form, IPayModeView
+    public partial class IPayModeView : Form, IPayModeView
     {
         private bool isEdit;
         private bool isSuccessful;
         private bool message;
 
-        public PayModeView()
+        public IPayModeView()
         {
             InitializeComponent();
             AssociateAndRaiseViewEvents();
@@ -86,54 +86,6 @@ namespace Supermarket_mevp.Views
             };
         }
 
-        //  public string PayModeId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        //   public string PayModeName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        //  public string PayModeObservation { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        //    public string SearchValue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        //  public bool IsEdit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool IsSuccessful { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        //  public string Message { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public event EventHandler SearchEvent;
-        public event EventHandler AddNewEvent;
-        public event EventHandler EditEvent;
-        public event EventHandler DeleteEvent;
-        public event EventHandler SaveEvent;
-        public event EventHandler CancelEvent;
-
-        public void setPayModeListBilidngSource(BindingSource payModeList)
-        {
-            DgPayMode.DataSource = payModeList;
-        }
-
-        private static PayModeView? instance;
-
-        public static PayModeView GetInstance(Form parentContainer)
-        {
-            if (instance == null || instance.IsDisposed)
-            {
-                instance = new PayModeView();
-                instance.MdiParent = parentContainer;
-
-                instance.FormBorderStyle=FormBorderStyle.None;
-                instance.Dock= DockStyle.Fill;
-            }
-            else
-            {
-                if (instance.WindowState == FormWindowState.Minimized)
-                {
-                    instance.WindowState = FormWindowState.Normal;
-                }
-                instance.BringToFront();
-            }
-            return instance;
-        }
-    
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         public string PayModeId
         {
@@ -173,6 +125,52 @@ namespace Supermarket_mevp.Views
             get { return Message; }
             set { Message = value; }
         }
+
+        public bool IsSuccessful { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public event EventHandler SearchEvent;
+        public event EventHandler AddNewEvent;
+        public event EventHandler EditEvent;
+        public event EventHandler DeleteEvent;
+        public event EventHandler SaveEvent;
+        public event EventHandler CancelEvent;
+
+        public void setPayModeListBilidngSource(BindingSource payModeList)
+        {
+            DgPayMode.DataSource = payModeList;
+        }
+
+        private static IPayModeView instance;
+
+        public static IPayModeView GetInstance(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new IPayModeView();
+                instance.MdiParent = parentContainer;
+
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                }
+                instance.BringToFront();
+            }
+            return instance;
+        }
+
+
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+   
 
     }
 
