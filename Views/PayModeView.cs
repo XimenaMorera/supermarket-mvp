@@ -12,13 +12,13 @@ using System.Windows.Forms.Design;
 
 namespace Supermarket_mevp.Views
 {
-    public partial class IPayModeView : Form, IPayModeView
+    public partial class PayModeView : Form, IPayModeView
     {
         private bool isEdit;
         private bool isSuccessful;
         private bool message;
 
-        public IPayModeView()
+        public PayModeView()
         {
             InitializeComponent();
             AssociateAndRaiseViewEvents();
@@ -140,13 +140,13 @@ namespace Supermarket_mevp.Views
             DgPayMode.DataSource = payModeList;
         }
 
-        private static IPayModeView instance;
+        private static PayModeView instance;
 
-        public static IPayModeView GetInstance(Form parentContainer)
+        public static PayModeView GetInstance(Form parentContainer)
         {
             if (instance == null || instance.IsDisposed)
             {
-                instance = new IPayModeView();
+                instance = new PayModeView();
                 instance.MdiParent = parentContainer;
 
                 instance.FormBorderStyle = FormBorderStyle.None;

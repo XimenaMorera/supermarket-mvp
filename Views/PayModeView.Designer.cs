@@ -1,6 +1,6 @@
 ﻿namespace Supermarket_mevp.Views
 {
-    partial class IPayModeView
+    partial class PayModeView
     {
         /// <summary>
         /// Required designer variable.

@@ -12,14 +12,32 @@ namespace Supermarket_mevp.Views
 {
     public partial class ProductView : Form, IProductView
     {
-        public string ProductId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        string IProductView.ProductName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string ProductId
+        {
+            get { return TxtProductId.Text; }
+            set { TxtProductId.Text = value; }
+        }
+        string IProductView.ProductName
+        {
+            get { return TxtProductName.Text; }
+            set { TxtProductName.Text = value; }
+        }
         public string ProductPrice { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string ProductStock { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string ProductCatId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string SearchValue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool IsEdit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool IsSuccessful { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string SearchValue 
+        {
+            get { return txtSearchProduct.Text; }
+            set { txtSearchProduct.Text = value; }
+        }
+        public bool IsEdit {
+            get { return IsEdit; }
+            set { IsEdit = value; }
+        }
+        public bool IsSuccessful {
+            get { return IsSuccessful; }
+            set { IsSuccessful = value; }
+        }
         public string Message { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public ProductView()
@@ -72,7 +90,58 @@ namespace Supermarket_mevp.Views
 
         private void AssociateAndRaiseViewEvents()
         {
-            throw new NotImplementedException();
+            BtnSearchProduct.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
+
+            txtSearchProduct.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SearchEvent?.Invoke(this, EventArgs.Empty);
+                }
+            };
+
+            BtnAddProduct.Click += delegate {
+                AddNewEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabProductList);
+                tabControl1.TabPages.Add(tabProductDetail);
+                tabProductDetail.Text = "Add New Product";
+            };
+            BtnEditProduct.Click += delegate {
+                EditEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabProductList);
+                tabControl1.TabPages.Add(tabProductDetail);
+                tabProductDetail.Text = "Edit Product";
+            };
+            BtnSave.Click += delegate {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+
+                if (IsSuccessful)
+                {
+                    tabControl1.TabPages.Remove(tabProductDetail);
+                    tabControl1.TabPages.Add(tabProductList);
+                }
+                MessageBox.Show(Message);
+            };
+
+            BtnCancel.Click += delegate {
+                CancelEvent?.Invoke(this, EventArgs.Empty);
+                tabControl1.TabPages.Remove(tabProductDetail);
+                tabControl1.TabPages.Add(tabProductList);
+
+            };
+            BtnDelete.Click += delegate
+            {
+                var result = MessageBox.Show("Are you sure you want to delete the selected Product", "Warning",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
+                    MessageBox.Show(Message);
+                }
+            };
         }
 
         public event EventHandler SearchEvent;

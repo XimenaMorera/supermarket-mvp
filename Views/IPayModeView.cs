@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Supermarket_mevp.Views
 {
+
     internal interface IPayModeView
     {
         string PayModeId { get; set; }
