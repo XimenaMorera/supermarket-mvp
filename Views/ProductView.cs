@@ -163,7 +163,7 @@ namespace Supermarket_mevp.Views
 
         public void SetProductsListBildingSource(BindingSource productsList)
         {
-            throw new NotImplementedException();
+           DgProductMode.DataSource = productsList;
         }
         private static ProductView instance;
 

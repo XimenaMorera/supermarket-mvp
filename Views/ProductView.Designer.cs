@@ -39,11 +39,11 @@
             tabControl1 = new TabControl();
             tabProductList = new TabPage();
             tabProductDetail = new TabPage();
-            panel1 = new Panel();
-            TxtProductId = new TextBox();
-            TxtProductName = new TextBox();
-            BtnSave = new Button();
             BtnCancel = new Button();
+            BtnSave = new Button();
+            TxtProductName = new TextBox();
+            TxtProductId = new TextBox();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)DgProductMode).BeginInit();
             tabControl1.SuspendLayout();
             tabProductList.SuspendLayout();
@@ -165,27 +165,14 @@
             tabProductDetail.Text = "Product Detail";
             tabProductDetail.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // BtnCancel
             // 
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(800, 73);
-            panel1.TabIndex = 9;
-            // 
-            // TxtProductId
-            // 
-            TxtProductId.Location = new Point(37, 35);
-            TxtProductId.Name = "TxtProductId";
-            TxtProductId.Size = new Size(100, 23);
-            TxtProductId.TabIndex = 0;
-            // 
-            // TxtProductName
-            // 
-            TxtProductName.Location = new Point(40, 86);
-            TxtProductName.Name = "TxtProductName";
-            TxtProductName.Size = new Size(100, 23);
-            TxtProductName.TabIndex = 1;
+            BtnCancel.Location = new Point(198, 170);
+            BtnCancel.Name = "BtnCancel";
+            BtnCancel.Size = new Size(75, 23);
+            BtnCancel.TabIndex = 3;
+            BtnCancel.Text = "btnCancel";
+            BtnCancel.UseVisualStyleBackColor = true;
             // 
             // BtnSave
             // 
@@ -196,14 +183,27 @@
             BtnSave.Text = "BtnSave";
             BtnSave.UseVisualStyleBackColor = true;
             // 
-            // BtnCancel
+            // TxtProductName
             // 
-            BtnCancel.Location = new Point(198, 170);
-            BtnCancel.Name = "BtnCancel";
-            BtnCancel.Size = new Size(75, 23);
-            BtnCancel.TabIndex = 3;
-            BtnCancel.Text = "btnCancel";
-            BtnCancel.UseVisualStyleBackColor = true;
+            TxtProductName.Location = new Point(40, 86);
+            TxtProductName.Name = "TxtProductName";
+            TxtProductName.Size = new Size(100, 23);
+            TxtProductName.TabIndex = 1;
+            // 
+            // TxtProductId
+            // 
+            TxtProductId.Location = new Point(37, 35);
+            TxtProductId.Name = "TxtProductId";
+            TxtProductId.Size = new Size(100, 23);
+            TxtProductId.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(800, 73);
+            panel1.TabIndex = 9;
             // 
             // ProductView
             // 
@@ -213,6 +213,7 @@
             Controls.Add(label1);
             Controls.Add(tabControl1);
             Controls.Add(panel1);
+            IsMdiContainer = true;
             Name = "ProductView";
             ((System.ComponentModel.ISupportInitialize)DgProductMode).EndInit();
             tabControl1.ResumeLayout(false);
